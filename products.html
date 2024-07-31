@@ -1,37 +1,65 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Supermarket - Products</title>
     <link rel="stylesheet" href="products.css">
 </head>
+
 <body>
     <header>
         <div class="logo">
             <p>LSupermarket</p>
         </div>
         <nav>
-                <a href="index.html">Home</a>
-                <a href="products.html">Products</a>
-                <a href="contact.html">Contact</a>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
     <main>
         <section id="products">
             <h2>Products</h2>
             <div id="product-list">
+                <!-- Esto se va a rellenar con JS -->
             </div>
-            <button id="buy-button">Buy</button>
+             <button id="buy-button">Buy</button>
             <p id="total">
-                Total: 0
-            </p>
+                Total: $0.00
+            </p> 
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 Supermarket</p>
+        <div class="container">
+            <div>
+                <p>Contact us:<br>contact@supermarket.com</br></p>
+                <p>+123 456 7890</p>
+            </div>
+            <div>
+                <p>Follow us:</p>
+               <p>Facebook</p>
+                <p>Twitter</p>
+              <p>Instagram</p> 
+            </div>
+            <div>
+                <p><a href="index.html">Home |</a></p> 
+                    <p><a href="products.html">Products |</a></p> 
+                    <p><a href="contact.html">Contact |</a></p>
+                
+            </div>
+            <div>
+                <p> Privacy Policy</p>
+                <p>Terms of Service</p>
+                
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Supermarket</p>
+        </div>
     </footer>
     <script src="products.js"></script>
 </body>
-</html>
 
+</html>

@@ -8,13 +8,27 @@ function createProducts(arrProducts, arrPrices, arrStock,arrImages) {
     for (let i = 0; i < arrProducts.length; i++) { //o con forEach: products.forEach((element, index) => {
         const productDiv = document.createElement('div');
         productDiv.className = 'product-card';
-        productDiv.innerHTML = `
-    <p class= "product-stock">Stock: ${arrStock[i]}</p>
-    <h2>${arrProducts[i]}</h2>
-    <img src="${arrImages[i]}" alt="product">
-    <p>$${arrPrices[i]}</p>
-    <input type="number" id="quantity-${i}" name="quantity" min="0" max="${arrStock[i]}" placeholder="Quantity">
-    `;
+        if (arrProducts[i] === "Egg") {
+            productDiv.classList.add('offer-card');
+            productDiv.innerHTML = `
+                <p class="product-stock">Stock: ${arrStock[i]}</p>
+                <p>-30% Off</p>
+                <img src="${arrImages[i]}" alt="offer product">
+                <h3>${arrProducts[i]}</h3>
+                <p>$${(arrPrices[i] * 0.7).toFixed(2)}</p>
+                <p><del>$${arrPrices[i]}</del></p>
+                <input type="number" id="quantity-${i}" name="quantity" min="0" max="${arrStock[i]}" placeholder="Quantity">
+            `;
+        } else {
+            productDiv.innerHTML = `
+                <p class="product-stock">Stock: ${arrStock[i]}</p>
+                <img src="${arrImages[i]}" alt="product">
+                <h3>${arrProducts[i]}</h3>
+                <p>$${arrPrices[i].toFixed(2)}</p>
+                <input type="number" id="quantity-${i}" name="quantity" min="0" max="${arrStock[i]}" placeholder="Quantity">
+            `;
+        }
+        
         productList.appendChild(productDiv);
     }
 }
@@ -31,11 +45,11 @@ button.addEventListener('click', () => {
         if (quantity > 0 && quantity <= stock[i]) {
             total += quantity * prices[i];
             stock[i] = stock[i] - quantity;
-            productStock[i].innerText = stock[i];
+            productStock[i].innerText = `Stock: ${stock[i]}`;
         } else if (quantity > stock[i]) {
-            error += `No hay suficiente stock de ${products[i]}. `;
+            error += `There is not enough stock of ${products[i]}. `;
         } else if (quantity <= 0) {
-            error += `Cantidad inválida para ${products[i]}. `;
+            error += `Quantity invalid of ${products[i]}. `;
         }
     });
 
