@@ -26,7 +26,7 @@ function createProducts(arrProducts, arrPrices, arrStock,arrImages) {
                 <h3>${arrProducts[i]}</h3>
                 <p>$${arrPrices[i].toFixed(2)}</p>
                 <input type="number" id="quantity-${i}" name="quantity" min="0" max="${arrStock[i]}" placeholder="Quantity">
-            `;
+                `;
         }
         
         productList.appendChild(productDiv);
@@ -42,14 +42,14 @@ button.addEventListener('click', () => {
     let productStock = document.querySelectorAll(`.product-stock`);
     products.forEach((element, i) => {
         const quantity = parseInt(document.getElementById(`quantity-${i}`).value, 10);
-        if (quantity > 0 && quantity <= stock[i]) {
+        if (!isNaN(quantity) && quantity > 0 && quantity <= stock[i]) {
             total += quantity * prices[i];
             stock[i] = stock[i] - quantity;
             productStock[i].innerText = `Stock: ${stock[i]}`;
-        } else if (quantity > stock[i]) {
+        } else if (!isNaN(quantity) && quantity > stock[i]) {
             error += `There is not enough stock of ${products[i]}. `;
-        } else if (quantity <= 0) {
-            error += `Quantity invalid of ${products[i]}. `;
+        } else if (!isNaN(quantity) && quantity <= 0) {
+            error += `Invalid quantity of ${products[i]}. `;
         }
     });
 

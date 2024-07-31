@@ -45,6 +45,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
+    justify-content: center;
 }
 
 .product-card{
@@ -54,7 +55,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 332px;
+    height: 362px;
 }
 
 .product-card h2{
@@ -115,6 +116,13 @@ color: #c0bfbf;
 
 #buy-button:hover {
     background-color: #134483;
+}
+
+#total{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1em;
+    text-align: center;
+    margin-top: 1em;
 }
 
 /* Footer styles */
