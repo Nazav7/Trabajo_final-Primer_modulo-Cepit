@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supermercado - Home</title>
+    <title>Supermarket - Home</title>
     <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -17,26 +18,34 @@
             <p>LSupermarket</p>
         </div>
         <nav>
-            <a href="index.html">Home</a></li>
-            <a href="products.html">Products</a></li>
-            <a href="contact.html">Contact</a></li>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
     <main>
         <section id="hero">
             <div class="content">
-                <h1>WELCOME TO OUR LOCAL <br>SUPERMARKET<br></h1>
+                <h1>WELCOME TO OUR LOCAL <br>SUPERMARKET</br></h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi asperiores exercitationem iusto odio
                     facere. Possimus minus</p>
             </div>
-            <img src="imagenes/10930487.png" alt="shopping basket">
+            <img src="imagenes/heroimg.png" alt="shopping basket">
+        </section>
+        <section id="offers">
+            <h2>Offers</h2>
+            <a href="products.html" id="offer-link">
+                <div id="offer-card" class="offer-card">
+                    <!-- Esto se rellena con JS -->
+                </div>
+            </a>
         </section>
         <!-- <h2>Category</h2> -->
-        <!-- <h2>Oferta Especial</h2>
-            <p>Producto en oferta con 30% de descuento.</p> -->
         <section id="about-us">
+            <div class="img-container">
             <img src="imagenes/about-us.png" alt="people in the supermarket">
-            <div>
+        </div>
+        <div>
                 <h2>About us</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, autem, facilis est provident itaque
                     facere quaerat eligendi cupiditate maxime quibusdam veniam voluptates adipisci ipsam unde
@@ -45,10 +54,46 @@
                     exercitationem labore autem itaque, illum, totam illo? Vitae, iste aliquam.</p>
             </div>
         </section>
+        <section id="our-history">
+            <div>
+                <h2>Our history</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga temporibus, non harum doloribus eveniet
+                    molestias cumque sapiente ipsum maxime a excepturi esse odit, laborum ipsa quas saepe.</p>
+            </div>
+             <div class="img-container"> 
+            <img src="imagenes/cart.png" alt="shopping cart">
+        </div> 
+        </section>
     </main>
     <footer>
-        <p>&copy; 2024 Supermarket</p>
+        <div class="container">
+            <div>
+                <p>Contact us:<br>contact@supermarket.com</br></p>
+                <p>+123 456 7890</p>
+            </div>
+            <div>
+                <p>Follow us:</p>
+                <p>Facebook</p>
+                <p>Twitter</p>
+                <p>Instagram</p>
+            </div>
+            <div>
+                <p><a href="index.html">Home |</a></p>
+                <p><a href="products.html">Products |</a></p>
+                <p><a href="contact.html">Contact |</a></p>
+
+            </div>
+            <div>
+                <p> Privacy Policy</p>
+                <p>Terms of Service</p>
+
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Supermarket</p>
+        </div>
     </footer>
+    <script src="index.js"></script>
 </body>
 
 </html>
