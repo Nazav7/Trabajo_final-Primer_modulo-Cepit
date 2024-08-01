@@ -54,11 +54,17 @@ buyButton.addEventListener('click', () => {
         // Obtiene el valor ingresado por el usuario
         const quantity = parseInt(document.getElementById(`quantity-${i}`).value, 10);
         const quantityInput = document.getElementById(`quantity-${i}`);
+
+
         // Si la cantidad es válida calcula el stock y el total
         if (!isNaN(quantity) && quantity > 0 && quantity <= stock[i]) {
             total += quantity * prices[i];
             stock[i] = stock[i] - quantity;
             productStock[i].innerText = `Stock: ${stock[i]}`;
+            //Si el producto es egg se aplica el descuento
+            if (element === "Egg") {
+                prices[i] *= 0.7;
+            }
             // Sino si la cantidad ingresada es mayor al stock muestra mensaje de error
         } else if (!isNaN(quantity) && quantity > stock[i]) {
             error += `There is not enough stock of ${products[i]}. `;
@@ -75,7 +81,7 @@ buyButton.addEventListener('click', () => {
         document.getElementById('error').innerText = error;
         document.getElementById('error').classList.add('error');
     } else {
-    // Sino limpia el mensaje de error y muestra el total
+        // Sino limpia el mensaje de error y muestra el total
         document.getElementById('error').innerText = '';
         document.getElementById('total').innerText = `Total: $${total.toFixed(2)}`;
     }
