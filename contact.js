@@ -20,4 +20,11 @@ form.addEventListener("submit", (e) => {
 
         // Librería FileSaver.js
         saveAs(blob, "contact.txt");
+
+        // Vacía los campos después de enviar el formulario
+        firstName.value = "";
+        lastName.value = "";
+        email.value = "";
+        phone.value = "";
+        message.value = "";
 });

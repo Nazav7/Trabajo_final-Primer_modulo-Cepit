@@ -125,6 +125,10 @@ color: #c0bfbf;
     margin-top: 1em;
 }
 
+.error{
+    color: red;
+}
+
 /* Footer styles */
 footer {
     padding: 2em 2em 0em;
