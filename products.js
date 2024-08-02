@@ -22,7 +22,7 @@ function createProducts(arrProducts, arrPrices, arrStock, arrImages) {
                 <h3>${arrProducts[i]}</h3>
                 <p>$${(arrPrices[i] * 0.7).toFixed(2)}</p>
                 <p><del>$${arrPrices[i]}</del></p>
-                <input type="number" id="quantity-${i}" name="quantity" min="0" max="${arrStock[i]}" placeholder="Quantity">
+                <input type="number" class="quantity-input" name="quantity" min="0" max="${arrStock[i]}" placeholder="Quantity">
             `;
         } else {
             // Si no es "Egg", muestra productos sin descuento
@@ -31,7 +31,7 @@ function createProducts(arrProducts, arrPrices, arrStock, arrImages) {
                 <img src="${arrImages[i]}" alt="product">
                 <h3>${arrProducts[i]}</h3>
                 <p>$${arrPrices[i].toFixed(2)}</p>
-                <input type="number" id="quantity-${i}" name="quantity" min="0" max="${arrStock[i]}" placeholder="Quantity">
+                <input type="number" class="quantity-input" name="quantity" min="0" max="${arrStock[i]}" placeholder="Quantity">
                 `;
         }
         // Añade los productos al contenedor
@@ -49,22 +49,23 @@ let total = 0;
 buyButton.addEventListener('click', () => {
     let error = '';
     let productStock = document.querySelectorAll(`.product-stock`);
+    const quantityInputs = document.querySelectorAll(`.quantity-input`);
     // Itera sobre los productos para calcular el total y actualizar el stock
     products.forEach((element, i) => {
         // Obtiene el valor ingresado por el usuario
-        const quantity = parseInt(document.getElementById(`quantity-${i}`).value, 10);
-        const quantityInput = document.getElementById(`quantity-${i}`);
-
-
+        const quantity = parseInt(quantityInputs[i].value, 10);
+        
         // Si la cantidad es válida calcula el stock y el total
         if (!isNaN(quantity) && quantity > 0 && quantity <= stock[i]) {
-            total += quantity * prices[i];
-            stock[i] = stock[i] - quantity;
-            productStock[i].innerText = `Stock: ${stock[i]}`;
             //Si el producto es egg se aplica el descuento
             if (element === "Egg") {
-                prices[i] *= 0.7;
+                total += quantity * (prices[i] * 0.7);
+            }else{
+            total += quantity * prices[i];
             }
+            stock[i] = stock[i] - quantity;
+            productStock[i].innerText = `Stock: ${stock[i]}`;
+            
             // Sino si la cantidad ingresada es mayor al stock muestra mensaje de error
         } else if (!isNaN(quantity) && quantity > stock[i]) {
             error += `There is not enough stock of ${products[i]}. `;
@@ -73,10 +74,10 @@ buyButton.addEventListener('click', () => {
             error += `Invalid quantity of ${products[i]}. `;
         }
         // Vacía el campo de entrada
-        quantityInput.value = "";
+        quantityInputs[i].value = "";
     });
 
-    // Si error es true muestra mensaje de error, y añade una clase
+    // Si hay errores muestra mensaje de error, y añade una clase
     if (error) {
         document.getElementById('error').innerText = error;
         document.getElementById('error').classList.add('error');
